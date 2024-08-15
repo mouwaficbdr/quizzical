@@ -1,0 +1,97 @@
+{
+  "response_code": 0,
+  "results": [
+    {
+      "type": "multiple",
+      "difficulty": "easy",
+      "category": "Entertainment: Books",
+      "question": "Green Eggs And Ham is a book by which author?",
+      "correct_answer": "Dr. Seuss",
+      "incorrect_answers": ["Beatrix Potter", "Roald Dahl", "A.A. Milne"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "easy",
+      "category": "Entertainment: Video Games",
+      "question": "In what year was Hearthstone released?",
+      "correct_answer": "2014",
+      "incorrect_answers": ["2011", "2013", "2012"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "hard",
+      "category": "Entertainment: Music",
+      "question": "What is the British term for a 64th note?",
+      "correct_answer": "Hemidemisemiquaver",
+      "incorrect_answers": [
+        "Semihemidemisemiquaver",
+        "Semiquaver",
+        "Demisemiquaver"
+      ]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "easy",
+      "category": "Entertainment: Music",
+      "question": "Which famous rapper is featured in Jack &Uuml; (Skrillex and Diplo)'s 2015 single called Febreze?",
+      "correct_answer": "2 Chainz",
+      "incorrect_answers": ["Kendrick Lamar", "Future", "Fatman Scoop"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "easy",
+      "category": "General Knowledge",
+      "question": "Five dollars is worth how many nickles?",
+      "correct_answer": "100",
+      "incorrect_answers": ["50", "25", "69"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "medium",
+      "category": "Entertainment: Books",
+      "question": "In Little Women, which of the March sisters married Laurie?",
+      "correct_answer": "Amy",
+      "incorrect_answers": ["Beth", "Jo", "Meg"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "hard",
+      "category": "Science &amp; Nature",
+      "question": "What is the name for the auditory illusion of a note that seems to be rising infinitely?",
+      "correct_answer": "Shepard Tone",
+      "incorrect_answers": [
+        "Glissandro Illusion",
+        "Fransen Effect",
+        "McGurck Effect"
+      ]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "medium",
+      "category": "Entertainment: Video Games",
+      "question": "The original Planetside was released in North America on...",
+      "correct_answer": "May 20, 2003",
+      "incorrect_answers": [
+        "June 17, 2001",
+        "September 29, 2003",
+        "January 14, 2005"
+      ]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "easy",
+      "category": "Mythology",
+      "question": "Who was the only god from Greece who did not get a name change in Rome?",
+      "correct_answer": "Apollo",
+      "incorrect_answers": ["Demeter", "Zeus", "Athena"]
+    },
+    {
+      "type": "boolean",
+      "difficulty": "medium",
+      "category": "Entertainment: Music",
+      "question": "EDM label Monstercat signs tracks instead of artists.",
+      "correct_answer": "True",
+      "incorrect_answers": ["False"]
+    }
+  ]
+}

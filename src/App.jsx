@@ -1,11 +1,17 @@
 import StartScreen from "./components/StartScreen"
-import QuizQuestions from "./components/QuizQuestions"
-import { useState, useEffect } from "react"
+import QuizPage from "./components/QuizPage"
+import { useState } from "react"
+import { nanoid } from "nanoid"
 import mockData from "./mockData.json"
 
 export default function App() {
 
-  const [data, setData] = useState(mockData.results)  
+  const [data, setData] = useState(mockData.results.map(el => (
+    {
+      id: nanoid(),
+      ...el
+    }
+  )))  
   const [start, setStart] = useState(false)
 
   /* FETCH API */
@@ -24,16 +30,38 @@ export default function App() {
   // }, [data])
 
   function startQuiz() {
-    // setStart(true)
+    setStart(true)
   }
 
+  // function getQuestions() {
+  //   const questions = data.map(el => el.question)
+  //   return questions
+  // }
+
+  // function getAnswers() {
+  //   const answers = data.map(el => {
+  //     const uniqueAnswers = new Set([...el.incorrect_answers, el.correct_answer])
+  //     return Array.from(uniqueAnswers)
+  //   })
+    
+  //   return answers
+  // }
 
   return (
     <main>
+      {!start
+        ? 
         <StartScreen
           startQuiz = {startQuiz}
-      />
-        <QuizQuestions />
+        />
+        
+        :
+
+        <QuizPage
+          data = {data}
+        />
+      }
+
     </main>
   )
 }

@@ -13,7 +13,8 @@ export default function App() {
     }
   )))  
   const [start, setStart] = useState(false)
-
+  const [choices, setChoices] = useState([])
+  console.log(choices)
   /* FETCH API */
   // useEffect(() => {
     
@@ -58,7 +59,9 @@ export default function App() {
         :
 
         <QuizPage
-          data = {data}
+          data={data}
+          choices={choices}
+          setChoices={setChoices}
         />
       }
 

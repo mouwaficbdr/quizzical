@@ -10,7 +10,14 @@ export default function QuizPage(props) {
 
   const quizData = props.data
   const quizElements = quizData.map(element => {
-    return <QuizElement key={element.id} question={element.question} answers={getAnswers(element)}/>
+    return <QuizElement
+      key={element.id}
+      question={element.question}
+      answers={getAnswers(element)}
+      choices={props.choices}
+      setChoices={props.setChoices}
+      id={element.id}
+    />
   })
 
   return (

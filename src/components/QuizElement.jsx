@@ -2,10 +2,16 @@
 import { nanoid } from "nanoid"
 import QuizElAnswer from "./QuizElAnswer"
 
-export default function QuizElement({question, answers}) {
+export default function QuizElement({question, answers, choices, setChoices, id}) {
   
   const answerButtons = answers.map(answer => {
-    return <QuizElAnswer key={nanoid()} answer={answer}/>
+    return <QuizElAnswer
+      key={nanoid()}
+      answer={answer}
+      choices={choices}
+      setChoices={setChoices}
+      id={id}
+    />
   })
 
   return (

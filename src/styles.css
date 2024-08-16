@@ -18,6 +18,12 @@ button{
   font-family: var(--fontKarla);
 }
 
+button:disabled{
+  transform: none !important;
+  cursor:not-allowed !important;
+  opacity: 0.7 ;
+}
+
 /* START SCREEN */
 
 .start-screen{
@@ -183,3 +189,38 @@ button{
   transform: translateY(2px)
 }
 
+.check-answers{
+  background-color: #4D5B9E;
+  color: #F5F7FB;
+  font-family: var(--fontInter);
+  font-size: 17px;
+  padding: 20px;;
+  font-weight: 600;
+  line-height: 12.39px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-wrap: nowrap;
+  border: none;
+  border-radius: 10px;
+  margin: 30px auto;
+  cursor: pointer;
+}
+
+
+.check-answers:hover{
+  color: #fcfdfe;
+  background-color: rgb(61, 54, 54);
+}
+
+.check-answers:active{
+  transform: translateY(2px);
+}
+
+.correct-answers-count{
+  font-family: var(--fontInter);
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 15.49px;
+  color: #ff0101;
+}

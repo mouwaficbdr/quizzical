@@ -4,9 +4,10 @@ import { useState } from "react"
 import { nanoid } from "nanoid"
 import mockData from "./mockData.json"
 
+
 export default function App() {
 
-  const [data, setData] = useState(mockData.results.map(el => (
+  const [data] = useState(mockData.results.map(el => (
     {
       id: nanoid(),
       ...el
@@ -14,7 +15,19 @@ export default function App() {
   )))  
   const [start, setStart] = useState(false)
   const [choices, setChoices] = useState([])
-  console.log(choices)
+  const [showResults, setShowResults] = useState(false)
+  const [correctCount, setCorrectCount] = useState(0)
+
+  function countCorrectAnswers(data, choices) {
+    return choices.reduce((count, choice) => {
+      const answerData = data.find((el) => el.id === choice.id);
+      return (
+        count +
+        (answerData && choice.userChoice === answerData.correct_answer ? 1 : 0)
+      );
+    }, 0);
+  }
+  
   /* FETCH API */
   // useEffect(() => {
     
@@ -62,6 +75,11 @@ export default function App() {
           data={data}
           choices={choices}
           setChoices={setChoices}
+          showResults={showResults}
+          setShowResults={setShowResults}
+          countCorrectAnswers={countCorrectAnswers}
+          correctCount = {correctCount}
+          setCorrectCount = {setCorrectCount}
         />
       }
 

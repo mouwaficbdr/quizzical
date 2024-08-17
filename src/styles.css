@@ -236,6 +236,17 @@ button:disabled{
 
 @media screen and (max-width: 768px) {
 
+
+    .start-screen::before{
+      top: -34px;
+      right: -60px;
+    }
+
+  .start-screen::after{
+      bottom: -90px;
+      left: -80px;
+    }
+
   .menu--title{
     font-size: 28px;
   }
@@ -252,6 +263,8 @@ button:disabled{
     font-size: 14px;
     margin-top: 20px;
   }
+
+
 
   .quiz-page{
     padding: 10px;

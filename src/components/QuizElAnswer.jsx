@@ -16,7 +16,7 @@ export default function QuizzElAnswer({data, answer, id, choices, setChoices, sh
 
   function chosenAnswerStyle() {
     const answerExistsInChoices = choices.some(
-      (el) => answer === el.userChoice
+      (el) => el.id === id && answer === el.userChoice
     );
     return answerExistsInChoices
       ? {

@@ -11,12 +11,9 @@ export default function App() {
   const [choices, setChoices] = useState([])
   const [showResults, setShowResults] = useState(false)
   const [correctCount, setCorrectCount] = useState(0)
+  const [isPlayAgain, setIsPlayAgain] = useState(false)
 
   console.log(data)
-
-  function doubleDecode(str) {
-    return  decode(decode(str))
-  }
 
   function countCorrectAnswers(data, choices) {
     return choices.reduce((count, choice) => {
@@ -27,31 +24,43 @@ export default function App() {
       );
     }, 0);
   }
+
+  function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
   
+  function playAgain() {
+    setChoices([])
+    setShowResults(false)
+    setCorrectCount(0)
+    setIsPlayAgain(true)
+    scrollToTop()
+  }
+
   /* FETCH QUESTIONS AND ANSWERS */
   useEffect(() => {
     
-    if (!data) {
       fetch('https://opentdb.com/api.php?amount=10')
-      .then(res => {
-        if (!res.ok) throw new Error("Network Error")
-        return res.json()
-      })
-        .then(data => setData(data.results.map(el => (
-          {
-            id: nanoid(),
-            question: doubleDecode(el.question), 
-            correct_answer: doubleDecode(el.correct_answer),
-            incorrect_answers: el.incorrect_answers.map(answer => doubleDecode(answer)),
-            ...el
-          }
+        .then((res) => {
+          if (!res.ok) throw new Error('Network Error');
+          return res.json();
+        })
+        .then((data) =>
+          setData(
+            data.results.map((el) => ({
+              id: nanoid(),
+              question: decode(el.question),
+              correct_answer: decode(el.correct_answer),
+              incorrect_answers: el.incorrect_answers.map((answer) =>
+                decode(answer)
+              ),
+              ...el,
+            }))
+          )
         )
-        
-      )))
-      .catch((error) => console.log(error))
-    }
+        .catch((error) => console.log(error));
     
-  }, [data])
+  }, [data, isPlayAgain])
 
   function startQuiz() {
     setStart(true)
@@ -75,7 +84,8 @@ export default function App() {
           setShowResults={setShowResults}
           countCorrectAnswers={countCorrectAnswers}
           correctCount = {correctCount}
-          setCorrectCount = {setCorrectCount}
+          setCorrectCount={setCorrectCount}
+          playAgain={playAgain}
         />
       }
 

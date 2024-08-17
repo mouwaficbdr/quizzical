@@ -33,20 +33,26 @@ export default function QuizPage(props) {
     />
   })
 
+  const scoreStyle = {
+    color: props.correctCount > 4 ? "green" : "red"
+  }
+
   return (
     <div className="quiz-page">
       <div className="quiz-page--container">
         {quizElements}
-        {props.showResults &&
-          <p className="correct-answers-count">
-            {`You scored ${props.correctCount}/${props.data.length} correct answers`}
-          </p>
-        }
-        <button className="check-answers"
-          onClick={() => checkAnswers()}
-        >
-          {props.showResults ? "Play Again" : "Check answers"}
-        </button>
+        <div className="quizz-page--button-container">
+          {props.showResults &&
+            <p className="correct-answers-count" style={scoreStyle}>
+              {`You scored ${props.correctCount}/${props.data.length} correct answers`}
+            </p>
+          }
+          <button className="check-answers"
+            onClick={props.showResults ? () => props.playAgain() : () => checkAnswers()}
+          >
+            {props.showResults ? "Play Again" : "Check answers"}
+          </button>
+        </div>
       </div>
     </div>
   )

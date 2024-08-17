@@ -1,22 +1,22 @@
 import StartScreen from "./components/StartScreen"
 import QuizPage from "./components/QuizPage"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { nanoid } from "nanoid"
-import mockData from "./mockData.json"
-
+import { decode } from 'he';
 
 export default function App() {
 
-  const [data] = useState(mockData.results.map(el => (
-    {
-      id: nanoid(),
-      ...el
-    }
-  )))  
+  const [data, setData] = useState()  
   const [start, setStart] = useState(false)
   const [choices, setChoices] = useState([])
   const [showResults, setShowResults] = useState(false)
   const [correctCount, setCorrectCount] = useState(0)
+
+  console.log(data)
+
+  function doubleDecode(str) {
+    return  decode(decode(str))
+  }
 
   function countCorrectAnswers(data, choices) {
     return choices.reduce((count, choice) => {
@@ -28,38 +28,34 @@ export default function App() {
     }, 0);
   }
   
-  /* FETCH API */
-  // useEffect(() => {
+  /* FETCH QUESTIONS AND ANSWERS */
+  useEffect(() => {
     
-  //   if (!data) {
-  //     fetch('https://opentdb.com/api.php?amount=10')
-  //     .then(res => {
-  //       if (!res.ok) throw new Error("Network Error")
-  //       return res.json()
-  //     })
-  //     .then(data => setData(data))
-  //     .catch((error) => console.log(error))
-  //   }
+    if (!data) {
+      fetch('https://opentdb.com/api.php?amount=10')
+      .then(res => {
+        if (!res.ok) throw new Error("Network Error")
+        return res.json()
+      })
+        .then(data => setData(data.results.map(el => (
+          {
+            id: nanoid(),
+            question: doubleDecode(el.question), 
+            correct_answer: doubleDecode(el.correct_answer),
+            incorrect_answers: el.incorrect_answers.map(answer => doubleDecode(answer)),
+            ...el
+          }
+        )
+        
+      )))
+      .catch((error) => console.log(error))
+    }
     
-  // }, [data])
+  }, [data])
 
   function startQuiz() {
     setStart(true)
   }
-
-  // function getQuestions() {
-  //   const questions = data.map(el => el.question)
-  //   return questions
-  // }
-
-  // function getAnswers() {
-  //   const answers = data.map(el => {
-  //     const uniqueAnswers = new Set([...el.incorrect_answers, el.correct_answer])
-  //     return Array.from(uniqueAnswers)
-  //   })
-    
-  //   return answers
-  // }
 
   return (
     <main>

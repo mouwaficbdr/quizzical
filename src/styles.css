@@ -250,23 +250,28 @@ button:disabled{
     text-align: center;
   }
 
+  .quiz-element > hr{
+    margin: auto;
+    margin-top: 15px;
+  }
+
   .quiz-element--buttons-container{
     justify-content: space-around;
   }
 
   .quiz-element--question{
     padding: 10px;
-    font-size: 15px;
-    line-height: 15px;
+    font-size: 17px;
+    line-height: 17px;
   }
 
   .quiz-element--answers{
     margin-right: 0;
-    font-size: 10px;
+    font-size: 12px;
     margin-bottom: 10px;
     width: 100%;
-    max-width: 65px;
-    padding: 3px;
+    padding: 5px;
+    margin-right: 3px;
     line-height: 12px;
   }
 
@@ -279,6 +284,7 @@ button:disabled{
   .correct-answers-count{
     position: static;
     font-size: 13px;
+    margin-bottom: -15px;
   }
 
 }

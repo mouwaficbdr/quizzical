@@ -190,10 +190,6 @@ button:disabled{
   transform: translateY(2px)
 }
 
-.quizz-page--button-container{
-  position: relative;
-}
-
 .check-answers{
   background-color: #4D5B9E;
   color: #F5F7FB;
@@ -223,9 +219,6 @@ button:disabled{
 }
 
 .correct-answers-count{
-  position: absolute;
-  top: 20px;
-  left: 250px;
   font-family: var(--fontInter);
   font-size: 16px;
   font-weight: 700;
@@ -323,7 +316,6 @@ button:disabled{
   }
 
   .correct-answers-count{
-    position: static;
     font-size: 13px;
     margin-bottom: -15px;
   }

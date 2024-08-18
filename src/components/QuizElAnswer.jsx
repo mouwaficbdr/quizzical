@@ -1,4 +1,5 @@
 /* eslint-disable react/prop-types */
+import {decode} from "he"
 
 export default function QuizzElAnswer({data, answer, id, choices, setChoices, showResults}) {
   function registerChoice() {
@@ -53,7 +54,7 @@ export default function QuizzElAnswer({data, answer, id, choices, setChoices, sh
       style={showResults ? resultsStyle() : chosenAnswerStyle()}
       disabled={showResults}
     >
-      {answer}
+      {decode(answer)}
     </button>
   );
 }

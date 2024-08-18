@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import { nanoid } from "nanoid"
 import QuizElAnswer from "./QuizElAnswer"
+import { decode } from 'he';
 
 export default function QuizElement({data, question, answers, choices, setChoices, id, showResults}) {
   
@@ -18,7 +19,7 @@ export default function QuizElement({data, question, answers, choices, setChoice
 
   return (
     <div className="quiz-element">
-      <h2 className="quiz-element--question">{question}</h2>
+      <h2 className="quiz-element--question">{decode(question)}</h2>
       <div className="quiz-element--buttons-container">
         {answerButtons}
       </div>

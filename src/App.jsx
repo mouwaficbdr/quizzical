@@ -2,7 +2,6 @@ import StartScreen from "./components/StartScreen"
 import QuizPage from "./components/QuizPage"
 import { useState, useEffect } from "react"
 import { nanoid } from "nanoid"
-import { decode } from 'he';
 
 export default function App() {
 
@@ -12,8 +11,6 @@ export default function App() {
   const [showResults, setShowResults] = useState(false)
   const [correctCount, setCorrectCount] = useState(0)
   const [isPlayAgain, setIsPlayAgain] = useState(false)
-
-  console.log(data)
 
   function countCorrectAnswers(data, choices) {
     return choices.reduce((count, choice) => {
@@ -37,6 +34,8 @@ export default function App() {
     scrollToTop()
   }
 
+
+  
   /* FETCH QUESTIONS AND ANSWERS */
   useEffect(() => {
     
@@ -49,18 +48,13 @@ export default function App() {
           setData(
             data.results.map((el) => ({
               id: nanoid(),
-              question: decode(el.question),
-              correct_answer: decode(el.correct_answer),
-              incorrect_answers: el.incorrect_answers.map((answer) =>
-                decode(answer)
-              ),
               ...el,
             }))
           )
         )
         .catch((error) => console.log(error));
     
-  }, [data, isPlayAgain])
+  }, [isPlayAgain])
 
   function startQuiz() {
     setStart(true)
